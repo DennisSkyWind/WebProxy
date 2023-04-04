@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { useRouteData } from 'react-static';
 import axios from 'axios';
 
-function WeatherPage() {
+export async function getStaticProps() {
+  return {
+    props: { title: 'Weather Page' },
+  };
+}
+
+export default function WeatherPage() {
   const [weather, setWeather] = useState();
 
   async function handleClick() {
@@ -18,11 +23,3 @@ function WeatherPage() {
     </div>
   );
 }
-
-export const getStaticProps = async () => {
-  return {
-    props: { title: 'Weather Page' },
-  };
-};
-
-export default WeatherPage;
